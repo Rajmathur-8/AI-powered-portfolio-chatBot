@@ -144,11 +144,9 @@ export default function ChatBot({ onToolCall, isOpen, onToggle }) {
       console.log('All tools successful:', allSuccessful, 'Results:', results);
 
       // All tools executed, send results back to AI for follow-up
-      setToolResults(results);
       await sendToolResults(results, originalMessage, allSuccessful);
       
       setExecutingTools(0);
-      setToolResults([]);
     } catch (error) {
       console.error('Execute tool calls error:', error);
       setExecutingTools(0);
